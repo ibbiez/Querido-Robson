@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Convite Especial</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(#ff0000,#ffffff);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+/* tela inicial */
+
+.intro{
+position:fixed;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* pokebola */
+
+.pokebola{
+width:120px;
+height:120px;
+border-radius:50%;
+background:linear-gradient(red 50%, white 50%);
+border:6px solid black;
+position:relative;
+animation:abrir 2s forwards;
+}
+
+.linha{
+position:absolute;
+top:50%;
+width:100%;
+height:6px;
+background:black;
+}
+
+.botao{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:30px;
+height:30px;
+background:white;
+border-radius:50%;
+border:6px solid black;
+}
+
+@keyframes abrir{
+0%{transform:scale(1);}
+100%{transform:scale(0); opacity:0;}
+}
+
+/* card convite */
+
+.container{
+display:none;
+width:90%;
+max-width:350px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
+text-align:center;
+}
+
+h1{
+font-size:24px;
+}
+
+p{
+font-size:16px;
+}
+
+button{
+margin-top:15px;
+padding:12px 20px;
+font-size:16px;
+border:none;
+border-radius:10px;
+background:#ffcc00;
+cursor:pointer;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="intro">
+<div class="pokebola">
+<div class="linha"></div>
+<div class="botao"></div>
+</div>
+</div>
+
+<div class="container" id="conteudo">
+
+<div class="card">
+
+<h1>Treinador!</h1>
+
+<p>Assim como todo treinador precisa de um parceiro...</p>
+
+<p>Eu preciso de alguém especial nessa jornada final.</p>
+
+<h2>Você aceita ser meu padrinho do terceirão?</h2>
+
+<button onclick="aceitar()">Aceitar missão</button>
+
+</div>
+
+</div>
+
+<script>
+
+setTimeout(()=>{
+document.querySelector(".intro").style.display="none";
+document.getElementById("conteudo").style.display="block";
+},2000);
+
+function aceitar(){
+alert("Missão aceita! 🔴⚪");
+}
+
+</script>
+
+</body>
+</html>
