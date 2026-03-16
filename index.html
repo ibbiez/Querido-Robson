@@ -7,7 +7,6 @@
 <title>Convite Especial</title>
 
 <style>
-
 body{
 margin:0;
 font-family:Arial;
@@ -16,10 +15,10 @@ display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
+overflow:hidden;
 }
 
-/* tela inicial */
-
+/* tela inicial (pokebola) */
 .intro{
 position:fixed;
 width:100%;
@@ -28,9 +27,8 @@ background:black;
 display:flex;
 justify-content:center;
 align-items:center;
+z-index:10;
 }
-
-/* pokebola */
 
 .pokebola{
 width:120px;
@@ -67,14 +65,14 @@ border:6px solid black;
 100%{transform:scale(0); opacity:0;}
 }
 
-/* card convite */
-
-.container{
+/* telas */
+.tela{
 display:none;
 width:90%;
 max-width:350px;
 }
 
+/* card padrão */
 .card{
 background:white;
 padding:25px;
@@ -83,14 +81,7 @@ box-shadow:0 10px 20px rgba(0,0,0,0.2);
 text-align:center;
 }
 
-h1{
-font-size:24px;
-}
-
-p{
-font-size:16px;
-}
-
+/* botão */
 button{
 margin-top:15px;
 padding:12px 20px;
@@ -105,11 +96,42 @@ button:hover{
 transform:scale(1.05);
 }
 
+/* tela aceita */
+.aceito{
+background:black;
+color:white;
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:none;
+justify-content:center;
+align-items:center;
+text-align:center;
+flex-direction:column;
+}
+
+.energia{
+position:absolute;
+width:100%;
+height:100%;
+background:radial-gradient(circle, rgba(255,255,0,0.2), transparent);
+animation:pulsar 2s infinite;
+}
+
+@keyframes pulsar{
+0%{opacity:0.2;}
+50%{opacity:0.6;}
+100%{opacity:0.2;}
+}
+
 </style>
 </head>
 
 <body>
 
+<!-- intro -->
 <div class="intro">
 <div class="pokebola">
 <div class="linha"></div>
@@ -117,7 +139,8 @@ transform:scale(1.05);
 </div>
 </div>
 
-<div class="container" id="conteudo">
+<!-- convite -->
+<div class="tela" id="convite">
 
 <div class="card">
 
@@ -127,7 +150,7 @@ transform:scale(1.05);
 
 <p>Eu preciso de alguém especial nessa jornada final.</p>
 
-<h2>Você aceita ser meu padrinho do terceirão?</h2>
+<h2>Você aceita ser nosso padrinho do terceirão?</h2>
 
 <button onclick="aceitar()">Aceitar missão</button>
 
@@ -135,15 +158,32 @@ transform:scale(1.05);
 
 </div>
 
+<!-- tela final -->
+<div class="aceito" id="aceito">
+
+<div class="energia"></div>
+
+<h1>Missão Aceita! 🎮</h1>
+
+<p>Agora você faz parte dessa jornada conosco.</p>
+
+<p>Essa aventura vai ser lendária! ⚡</p>
+
+</div>
+
 <script>
 
+// mostrar convite depois da pokebola
 setTimeout(()=>{
 document.querySelector(".intro").style.display="none";
-document.getElementById("conteudo").style.display="block";
+document.getElementById("convite").style.display="block";
+document.body.style.overflow="auto";
 },2000);
 
+// botão aceitar
 function aceitar(){
-alert("Missão aceita! 🔴⚪");
+document.getElementById("convite").style.display="none";
+document.getElementById("aceito").style.display="flex";
 }
 
 </script>
